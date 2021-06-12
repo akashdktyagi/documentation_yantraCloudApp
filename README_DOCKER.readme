@@ -1,4 +1,4 @@
-Docker Commands:
+# Docker Commands:
 
 1. Get all docker images: docker images -a
 2. Delete all docker images: docker rmi $(docker images -a -q)
@@ -79,3 +79,39 @@ https://vsupalov.com/docker-env-vars/#:~:text=If%20the%20Dockerfile%20has%20ARG,
 docker pull gofnusiss/travel-plan-ui:5f01d7238baa8050feac1070351f8744225cf2f8
 
 docker run  -p 4200:4200 gofnusiss/travel-plan-ui:5f01d7238baa8050feac1070351f8744225cf2f8
+
+# Docker Compose:
+
+Cheat Sheet links:
+
+https://devhints.io/docker-compose
+
+docker-compose start. => only to start containers which were previously created already
+docker-compose stop
+docker-compose pause
+docker-compose unpause
+docker-compose ps
+docker-compose up. ==> to start all the containers afresh mentioned in the compose file.
+docker-compose down
+
+
+
+//*******************************
+Install docker compose on Debian 10 i.e. bitnami Jenkins: 
+https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-debian-10
+These are the commands mentioned in the link:
+
+sudo curl -L https://github.com/docker/compose/releases/download/1.25.3/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+
+docker-compose  -f ./microservicecloud/docker-compose.yml up —build
+
+
+//*************PARAMATRIZE Docker compose file
+1. Create .env file and add a dummy value to the variable
+2. like: tag_name=123
+3. Then pre-append the name of the tag and its value infront of the docker-compose file:
+4. example: sudo api_tag=$tag docker-compose -f microservicecloud/docker-compose.yml up -d
+
+
